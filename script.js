@@ -1,22 +1,28 @@
-const redSlider = document.querySelector("#red");
-const greenSlider = document.querySelector("#green");
-const blueSlider = document.querySelector("#blue");
-const colorValue = document.querySelector("#color-value");
+const red = document.querySelector("#red");
+const green = document.querySelector("#green");
+const blue = document.querySelector("#blue");
+const hex = document.querySelector("#hex");
+const inputs = document.querySelectorAll("input");
 
-function setBackgroundColor() {
-  const red = rangeValueToHex(redSlider.value);
-  const green = rangeValueToHex(greenSlider.value);
-  const blue = rangeValueToHex(blueSlider.value);
-
-  const color = "#" + red + green + blue;
-  document.body.style.backgroundColor = color;
-  colorValue.innerText = color;
-}
-setBackgroundColor();
-
-function rangeValueToHex(value) {
-  value = Number.parseInt(value);
-  return ("0" + value.toString(16)).substr(-2);
+for (i = 0; i < inputs.length; i++) {
+  inputs[i].step = 1;
+  inputs[i].min = 0;
+  inputs[i].max = 255;
 }
 
-document.body.addEventListener("input", setBackgroundColor);
+red.value = 255;
+green.value = 105;
+blue.value = 180;
+
+function changeBGColor() {
+  // value = string, daher +
+  const redbg = (+red.value).toString(16);
+  const greenbg = (+green.value).toString(16);
+  const bluebg = (+blue.value).toString(16);
+
+  const bgcolor = `#${redbg}${greenbg}${bluebg}`;
+  document.body.style.backgroundColor = bgcolor;
+  hex.innerText = bgcolor;
+}
+changeBGColor();
+document.addEventListener("input", changeBGColor);

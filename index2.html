@@ -13,13 +13,13 @@
     <header>
         <form>
             <label for="red">r</label>
-            <input type="range" id="red" />
+            <input type="range" id="red" step="1" min="0" max="255" value="255" />
             <label for="green">g</label>
-            <input type="range" id="green" />
+            <input type="range" id="green" step="1" min="0" max="255" value="105" />
             <label for="blue">b</label>
-            <input type="range" id="blue" />
+            <input type="range" id="blue" step="1" min="0" max="255" value="180" />
         </form>
-        <p id="hex"></p>
+        <p id="color-value"></p>
     </header>
     <script src="script.js"></script>
 </body>
